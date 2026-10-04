@@ -19,7 +19,22 @@ paredes = [
     pygame.Rect(0, 0, LARGURA, 20),
     pygame.Rect(0, ALTURA - 20, LARGURA, 20),
     pygame.Rect(0, 0, 20, ALTURA),
-    pygame.Rect(LARGURA - 20, 0, 20, ALTURA)
+    pygame.Rect(LARGURA - 20, 0, 20, ALTURA),
+
+    # Sala de Matemática, aberta para o corredor na parte inferior.
+    pygame.Rect(20, 280, 200, 16),
+    pygame.Rect(300, 280, 220, 16),
+    pygame.Rect(520, 20, 16, 276),
+
+    # Laboratório, com entrada pelo corredor na parte superior.
+    pygame.Rect(20, 400, 200, 16),
+    pygame.Rect(300, 400, 220, 16),
+    pygame.Rect(520, 400, 16, 280),
+
+    # Área de saída, também aberta para o corredor.
+    pygame.Rect(690, 20, 16, 276),
+    pygame.Rect(690, 280, 110, 16),
+    pygame.Rect(880, 280, 100, 16)
 ]
 
 rodando = True
@@ -63,8 +78,13 @@ while rodando:
             else:
                 jogador.top = parede.bottom
 
-    # Fundo
-    tela.fill((30, 30, 30))
+    # Pisos coloridos destacam o corredor e cada área do mapa.
+    tela.fill((62, 68, 70))
+    pygame.draw.rect(tela, (105, 112, 108), pygame.Rect(20, 296, 960, 104))
+    pygame.draw.rect(tela, (105, 112, 108), pygame.Rect(536, 36, 154, 260))
+    pygame.draw.rect(tela, (76, 91, 111), pygame.Rect(36, 36, 484, 244))
+    pygame.draw.rect(tela, (75, 105, 94), pygame.Rect(36, 416, 484, 264))
+    pygame.draw.rect(tela, (111, 105, 73), pygame.Rect(706, 36, 254, 244))
 
     # Desenha as paredes
     for parede in paredes:
